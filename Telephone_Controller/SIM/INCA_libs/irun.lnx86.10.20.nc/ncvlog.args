@@ -1,0 +1,23 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
+-XLMODE
+./INCA_libs/irun.lnx86.10.20.nc
+-RUNMODE
+..//RTL/apb_fsm.v
+..//RTL/comparator.v
+..//RTL/counter.v
+..//RTL/dff.v
+..//RTL/telephone_fsm.v
+..//RTL/telephone_top.v
+..//TB/tb_telephone.sv
+-CDSLIB
+./INCA_libs/irun.lnx86.10.20.nc/cdsrun.lib
+-HDLVAR
+./INCA_libs/irun.lnx86.10.20.nc/hdlrun.var
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./INCA_libs/irun.lnx86.10.20.nc/xllibs
+-ALLOWUNBOUND

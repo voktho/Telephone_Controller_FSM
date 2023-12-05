@@ -1,0 +1,11 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
+/home/buet/exchange/Digital_Design/Ulka_semi/RTL/apb_fsm.v
+/home/buet/exchange/Digital_Design/Ulka_semi/RTL/comparator.v
+/home/buet/exchange/Digital_Design/Ulka_semi/RTL/counter.v
+/home/buet/exchange/Digital_Design/Ulka_semi/RTL/dff.v
+/home/buet/exchange/Digital_Design/Ulka_semi/RTL/telephone_fsm.v
+/home/buet/exchange/Digital_Design/Ulka_semi/RTL/telephone_top.v
+/home/buet/exchange/Digital_Design/Ulka_semi/TB/tb_telephone.sv

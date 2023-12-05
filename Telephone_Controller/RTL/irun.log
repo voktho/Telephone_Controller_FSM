@@ -1,0 +1,63 @@
+irun: 10.20-s100: (c) Copyright 1995-2011 Cadence Design Systems, Inc.
+TOOL:	irun	10.20-s100: Started on Mar 09, 2023 at 16:18:00 BDT
+irun
+	dff.v
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncvlog: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+file: dff.v
+	module worklib.dff:v
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncelab: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		dff
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncvlog_cg: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+		worklib.dff:v <0x43110488>
+			streams:   0, words:     0
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		        Instances  Unique
+		Modules:        1       1
+		Registers:      1       1
+		Always blocks:  1       1
+	Writing initial simulation snapshot: worklib.dff:v
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncsim: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+Loading snapshot worklib.dff:v .................... Done
+ncsim> run
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
+TOOL:	irun	10.20-s100: Exiting on Mar 09, 2023 at 16:18:03 BDT  (total: 00:00:03)

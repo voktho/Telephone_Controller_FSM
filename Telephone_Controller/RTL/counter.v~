@@ -1,0 +1,5 @@
+module counter#(parameter COUNT_WIDTH=8)(input pclk,
+	       input presetn,
+	       input clear,
+	       output reg [COUNT_WIDTH-1:0] count);
+endmodule

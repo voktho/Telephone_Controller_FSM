@@ -1,0 +1,94 @@
+irun: 10.20-s100: (c) Copyright 1995-2011 Cadence Design Systems, Inc.
+TOOL:	irun	10.20-s100: Started on Mar 09, 2023 at 17:09:03 BDT
+irun
+	-f file.f
+		..//RTL/*.v
+		..//TB/*.sv
+	-gui
+	-access +rwc
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+Recompiling... reason: file '../TB/tb_telephone.sv' is newer than expected.
+	expected: Thu Mar  9 16:59:21 2023
+	actual:   Thu Mar  9 17:09:10 2023
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncvlog: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+file: ..//TB/tb_telephone.sv
+	module worklib.tb_telephone:sv
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+irun: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncelab: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		tb_telephone
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncvlog_cg: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+		worklib.tb_telephone:sv <0x4a91f93b>
+			streams:  17, words:  6071
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+				.cancel(cancel),
+				             |
+ncelab: *W,CSINFI (../RTL/telephone_top.v,69|17): implicit wire has no fanin (tb_telephone.dut_tele_top.cancel).
+				.end_call(end_call),
+				                 |
+ncelab: *W,CSINFI (../RTL/telephone_top.v,66|21): implicit wire has no fanin (tb_telephone.dut_tele_top.end_call).
+				.dial(dial),
+				         |
+ncelab: *W,CSINFI (../RTL/telephone_top.v,64|13): implicit wire has no fanin (tb_telephone.dut_tele_top.dial).
+	Design hierarchy summary:
+		              Instances  Unique
+		Modules:             12       7
+		Registers:           27      23
+		Scalar wires:        23       -
+		Vectored wires:      19       -
+		Always blocks:       14      10
+		Initial blocks:       3       2
+		Cont. assignments:   12      13
+		Pseudo assignments:  10      10
+	Writing initial simulation snapshot: worklib.tb_telephone:sv
+DEFINE current_ref /home/buet/exchange/Analog_Design/current_ref
+|
+ncsim: *W,DLCPTH (/home/buet/cds.lib,2): cds.lib Invalid path '/home/buet/exchange/Analog_Design/current_ref' (cds.lib command ignored).
+
+-------------------------------------
+Relinquished control to SimVision...
+ncsim> 
+ncsim> database -open waves -into waves.shm -default
+Created default SHM database waves
+ncsim> probe -create -shm tb_telephone.call_ended tb_telephone.call_timeout tb_telephone.dial_timeout tb_telephone.dial_tone tb_telephone.in_call tb_telephone.paddr tb_telephone.pclk tb_telephone.penable tb_telephone.pickup_call tb_telephone.prdata tb_telephone.pready tb_telephone.presetn tb_telephone.psel tb_telephone.pwdata tb_telephone.pwrite
+Created probe 1
+ncsim> run
+Simulation complete via $finish(1) at time 3035 NS + 0
+../TB/tb_telephone.sv:78 #3000 $finish;
+ncsim> 

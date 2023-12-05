@@ -1,0 +1,16 @@
+module dff #(parameter DATA_WIDTH=32)(input pclk,
+				      input presetn,
+				      input [DATA_WIDTH-1:0] d,
+				      output reg [DATA_WIDTH-1:0] q
+				      );
+
+
+always @(posedge pclk,negedge presetn)
+begin
+if(~presetn)
+q <= 0;
+else 
+q <= d;
+end
+
+endmodule

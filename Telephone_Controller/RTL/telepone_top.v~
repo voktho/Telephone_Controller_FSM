@@ -1,0 +1,137 @@
+module telephone_top #(parameter DATA_WIDTH=32,ADDR_WIDTH=32) (input pclk,
+								input presetn,
+								input psel,
+								input penable,
+								input pwrite,
+								input [ADDR_WIDTH-1:0] paddr,
+								input [DATA_WIDTH-1:0] pwdata,
+								input pickup_call,
+								);
+
+
+
+wire [ADDR_WIDTH-1:0] addr;
+wire [DATA_WIDTH-1:0] wr_data;
+
+apb_fsm #(.DATA_WIDTH(32),.ADDR_WIDTH(32)) dut_apb_fsm(.pclk(pclk),
+						       .presetn(presetn),
+						       .psel(psel),
+						       .penable(penable),
+						       .pwrite(pwrite),
+						       .paddr(paddr),
+						       .pwdata(pwdata),
+						       .wr_en(wr_en),
+						       .rd_en(rd_en),
+						       .pready(pready),
+						       .wr_data(wr_data),
+						       .addr(addr)
+						       );
+
+wire [2:0] count_5;
+wire [7:0] count_250;
+
+counter #(.COUNT_WIDTH(3)) dut_count_5(.pclk(pclk),
+		     .presetn(presetn),
+		     .clear(clear),
+		     .count(count_5)
+		     );
+
+counter #(.COUNT_WIDTH(8)) dut_count_250(.pclk(pclk),
+		      .presetn(presetn),
+		      .clear(clear),
+		      .count(count_250)
+		      );
+
+comparator #(.COMP_WIDTH(3)) dut_comp_5(.count(count_5),
+				      .comp_with(3'b101),
+				      .comp_val(count_eql_5)
+				      );
+
+comparator #(.COMP_WIDTH(8)) dut_comp_250(.count(count_250),
+				      .comp_with(8'd250),
+				      .comp_val(count_eql_250)
+				      );
+
+telephone_fsm dut_telephone_fsm(.pclk(pclk),
+				.presetn(presetn),
+				.dial(dial),
+				.pickup_call(pickup_call),
+				.end_call(end_call),
+				.count_eql_5(count_eql_5),
+				.count_eql_250(count_eql_250),
+				.cancel(cancel),
+				.dial_tone(dial_tone),
+				.in_call(in_call),
+				.dial_timeout(dial_timeout),
+				.call_ended(call_ended),
+				.call_timeout(call_timeout),
+				.clear(clear)
+				);
+
+
+
+wire con_wr_en,cr_wr_en,valid;
+wire [DATA_WIDTH-1:0] con_d,cr_d,stat_d,call_dur_d;
+reg con_q,cr_q,stat_q,call_dur_q;
+wire [10:0] contact;
+
+//contact
+
+assign con_wr_en = wr_en & (addr == 32'h8);
+assign con_d= (con_wr_en & contact=11'h0){21'b0 ,wr_data[10:0]}:{21'b0,11'bx};
+assign valid= (con_wr_en & contact!=11'h0);
+
+dff dut_contact(.pclk(pclk),
+	   .presetn(presetn),
+	   .d(con_d),
+	   .q(con_q)
+	   );
+assign contact=con_q[10:0];
+
+//stat
+
+assign stat_d={29'b0,dial_timeout,in_call,call_timeout};
+
+dff dut_stat(.pclk(pclk),
+	   .presetn(presetn),
+	   .d(stat_d),
+	   .q(stat_q)
+	   );
+	   
+	   
+
+// control
+
+assign cr_wr_en=wr_en & (addr==32'h0);
+assign cr_d=cr_wr_en ? {29'b0,end_call,cancel,dial};
+
+dff dut_cr(.pclk(pclk),
+	   .presetn(presetn),
+	   .d(cr_d),
+	   .q(cr_q));
+	   
+	   
+
+//call_duration
+
+wire [7:0] duration = count_250;
+
+assign call_dur_d={24'b0,duration};
+
+dff dut_call_duration(.pclk(pclk),
+	   .presetn(presetn),
+	   .d(call_dur_d),
+	   .q(call_dur_q));
+
+
+//read using apb	   
+always @(*)
+begin
+casez(addr)
+32'h0:pr_data= rd_en?cr_q:32'h0;
+32'h4:pr_data= rd_en?stat_q:32'h0;
+32'h8:pr_data= rd_en?con_q:32'h0;
+32'hC:pr_data= rd_en?call_dur_q:32'h0;
+end	   
+
+endmodule
